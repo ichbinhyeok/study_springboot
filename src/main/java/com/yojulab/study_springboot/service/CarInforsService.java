@@ -72,7 +72,15 @@ public class CarInforsService {
 
         Object result = sharedDao.getOne(sqlMapId, dataMap);
         return result;
-    }    
+    }
+
+    public Object joinSelect01(Map dataMap) {
+        String sqlMapId = "CarInfors.joinSelect01";
+
+        Object result = sharedDao.getList(sqlMapId, dataMap);
+        return result;
+    }
+
 
     // 검색(조건-search : YEAR, CAR_NAME)
     public Object selectSearch(String search, String words) {
@@ -95,6 +103,8 @@ public class CarInforsService {
         Object result = sharedDao.getList(sqlMapId, dataMap);
         return result;
     }
+
+
 
     public Object selectDetail(String CAR_INFOR_ID) {
         // Object getOne(String sqlMapId, Object dataMap)

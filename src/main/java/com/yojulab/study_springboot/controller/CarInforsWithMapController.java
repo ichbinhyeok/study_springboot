@@ -38,6 +38,8 @@ public class CarInforsWithMapController {
         return modelAndView;
     }
 
+
+
     // delete with MVC
     @PostMapping("/deleteAndSelectSearch/{UNIQUE_ID}")
     public ModelAndView deleteAndSelectSearch(@PathVariable String UNIQUE_ID

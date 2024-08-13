@@ -45,6 +45,22 @@
         ;
 	</select>
 
+    <select id="joinSelect01" parameterType="map" resultType="map">
+        SELECT
+            CP.CP_NAME AS `회사이름`,
+            CN.CAR_NAME AS `자동차이름`,
+            MY.DATE_YEAR AS `연식`,
+            COUNT(OP.`OPTION`) AS `옵션갯수`
+        FROM CAR_INFO CI
+                 INNER JOIN CAR_INFO_OPTIONS COP ON CI.CI_PK = COP.CI_FK
+                 INNER JOIN COMPANY CP ON CP.CP_PK = CI.CP_FK
+                 INNER JOIN CAR_NAME CN ON CN.CN_PK = CI.CN_FK
+                 INNER JOIN MODEL_YEAR MY ON MY.YEAR_PK = CI.YEAR_FK
+                 INNER JOIN OPTIONS OP ON OP.OP_PK = COP.OP_FK
+        GROUP BY CP.CP_NAME, CN.CAR_NAME, MY.DATE_YEAR;
+    </select>
+
+
     <!-- mybatis foreach HashMap.put("CAR_INFOR_ID_LIST", CAR_INFOR_ID_LIST)-->
 	<select id="selectInUID" parameterType="Map" resultType="Map">    
         SELECT * 

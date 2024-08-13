@@ -77,6 +77,18 @@ public class CarInforsController {
         return ResponseEntity.ok().body(result);
     }
 
+    @GetMapping("/newSelect")
+    public ModelAndView selectSearch02(@RequestParam Map params,ModelAndView modelAndView){
+
+
+        Object result = carInforsService.joinSelect01(params);
+        modelAndView.addObject("params",params);
+        modelAndView.addObject("result",result);
+
+        modelAndView.setViewName("/WEB-INF/views/newCarInfors/list_map.jsp");
+        return modelAndView;
+    }
+
     // /selectDetail/CI002
     @GetMapping("/selectDetail/{CAR_INFOR_ID}")
     public ResponseEntity selectDetail(@PathVariable String CAR_INFOR_ID) {

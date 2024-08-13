@@ -26,6 +26,7 @@ public class SecurityConfiguration {
                         .requestMatchers("/manager*").hasAnyRole("ADMIN", "MANAGER")
                         .requestMatchers("/admin*").hasRole("ADMIN")
                         .requestMatchers("/carInfor/map/selectSearch").authenticated()
+                        .requestMatchers("/carInfor/new_select").authenticated()
                         .requestMatchers("/carInfor/map/*").hasRole("USER")
                         .anyRequest().permitAll()
                 ;
