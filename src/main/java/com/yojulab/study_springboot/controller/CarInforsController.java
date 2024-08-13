@@ -70,6 +70,17 @@ public class CarInforsController {
         modelAndView.setViewName("/WEB-INF/views/carinfor/list.jsp");
         return modelAndView;
     }
+//    ciPk
+    @PostMapping("/deleteJoin")
+    public ModelAndView deleteJoin(@RequestParam String params
+            , ModelAndView modelAndView) {
+        System.out.println("pafjajsfpjspadpfjspppp"+params);
+//        Object result = carInforsService.deleteJoin(params);
+        modelAndView.addObject("params", params);
+
+        modelAndView.setViewName("/WEB-INF/views/newCarInfors/list_map.jsp");
+        return modelAndView;
+    }
 
     @GetMapping("/selectAll/{CAR_INFOR_ID}")
     public ResponseEntity selectAll(@PathVariable String CAR_INFOR_ID) {

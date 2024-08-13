@@ -145,6 +145,14 @@ public class CarInforsService {
         Object result = sharedDao.delete(sqlMapId, dataMap);
         return result;
     }
+    public Object deleteJoin(Map dataMap){
+        String sqlMapId = "CarInfors.deleteJoinOptions";
+        Object result = sharedDao.delete(sqlMapId, dataMap);
+
+        sqlMapId = "CarInfors.deleteJoinInfo";
+        result = sharedDao.delete(sqlMapId, dataMap);
+       return result;
+    }
 
     // MVC view
     public Object deleteAndSelectSearch(String UNIQUE_ID, Map dataMap) {

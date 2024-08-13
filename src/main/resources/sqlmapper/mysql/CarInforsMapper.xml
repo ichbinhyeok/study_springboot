@@ -46,7 +46,8 @@
 	</select>
 
     <select id="joinSelect01" parameterType="map" resultType="map">
-        SELECT
+        select
+            CI.CI_PK AS CI_PK,
             CP.CP_NAME AS `회사이름`,
             CN.CAR_NAME AS `자동차이름`,
             MY.DATE_YEAR AS `연식`,
@@ -57,7 +58,7 @@
                  INNER JOIN CAR_NAME CN ON CN.CN_PK = CI.CN_FK
                  INNER JOIN MODEL_YEAR MY ON MY.YEAR_PK = CI.YEAR_FK
                  INNER JOIN OPTIONS OP ON OP.OP_PK = COP.OP_FK
-        GROUP BY CP.CP_NAME, CN.CAR_NAME, MY.DATE_YEAR;
+        GROUP BY CI.CI_PK, CP.CP_NAME, CN.CAR_NAME, MY.DATE_YEAR;
     </select>
 
 
@@ -109,4 +110,17 @@
         delete from CAR_INFORS
         where CAR_INFOR_ID = #{CAR_INFOR_ID}
     </delete>
+
+    <delete id="deleteJoinOptions" parameterType="Map">
+        <!-- CAR_INFO_OPTIONS 테이블에서 관련 레코드 삭제 -->
+        DELETE FROM `CAR_INFO_OPTIONS`
+        WHERE `CI_FK` = #{CI_PK}
+    </delete>
+
+    <delete id="deleteJoinInfo" parameterType="Map">
+        <!-- CAR_INFO 테이블에서 레코드 삭제 -->
+        DELETE FROM `CAR_INFO`
+        WHERE `CI_PK` = #{CI_PK}
+    </delete>
+
 </mapper>
